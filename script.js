@@ -112,7 +112,7 @@ var app = Vue.createApp({
                         url: this.shareUrl,
                     })
                     .then(() => console.log("Successful share"))
-                    .catch((error) => console.log("Error sharing:", error));
+                    .catch((error) => console.error("Error sharing:", error));
             } else {
                 this.showShare = true;
             }
@@ -140,8 +140,8 @@ app.directive("lazyload-video", {
         el.addEventListener("canplay", () => 
           el.classList.add("loaded")
         );
-          el.addEventListener("error", () =>
-              console.log("error")
+          el.addEventListener("error", (e) =>
+              console.error("lazy video", e)
           );
           el.autoplay = true;
           el.loop = true;
@@ -180,8 +180,8 @@ app.directive("lazyload-img", {
       function loadImage() {
         if (el.nodeName !== "IMG") throw new Error("lazyload-img directive must be applied to a <img> element");
         el.addEventListener("load", () => el.classList.add("loaded"));
-        el.addEventListener("error", () =>
-            console.log("error")
+        el.addEventListener("error", (e) =>
+          console.error("image load", e)
         );
         el.src = el.dataset.url;
       }
@@ -227,7 +227,12 @@ app.component("figure", {
 });
 
 app.component("figure-video", {
-  props: ["figureId"],
+  props: ["figureId","hasAudio"],
+  data() {
+    return {
+      isMuted: true
+    };
+  },
   computed: {
       fileName() {
         return `0000${this.figureId}`.slice(-4);
@@ -239,12 +244,26 @@ app.component("figure-video", {
         return `img/${this.fileName}.png`;
       },
       source: function () {
-          return `img/${this.fileName}.mp4`;
+        return `img/${this.fileName}.mp4`;
+      },
+      subtitle: function() {
+        return `img/${this.fileName}.vtt`;
       },
   },
-  template: `<video v-lazyload-video class="loader" :data-src="source" :data-poster="poster" :alt="alt" />`,
+  methods: {
+    unmute() {
+      this.isMuted = this.$refs.video.muted = !this.$refs.video.muted;
+    }
+  },
+  template: `<video ref="video" v-lazyload-video class="loader" :data-src="source" :data-poster="poster" :alt="alt" >
+      <track label="English" kind="subtitles" srclang="en" v-if="hasAudio" :data-src="subtitle" default>
+    </video>
+    <button class="figure-video__unmute" v-if="hasAudio" v-on:click="unmute">
+      <span v-if="!isMuted">⏸ Mute</span>
+      <span v-if="isMuted">▶️ Unmute</span>
+    </button>`,
 });
-
+ 
 app.component("figure-image", {
   props: ["figureId", "fileType"],
   computed: {

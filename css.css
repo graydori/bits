@@ -31,12 +31,31 @@ figure {
   justify-content: center;
   margin: 0 auto;
   max-width: 600px;
+  position: relative;
 }
 
 figure video,
 figure img {
   width: 80%;
   align-self: center;
+}
+
+figure .figure-video__unmute {
+  font-family: "Concert One", cursive;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 5px;
+  background: #fff;
+  color: #49417d;
+  border: 1px solid;
+  display: inline;
+  cursor: pointer;
+}
+figure .figure-video__unmute:hover {
+  background: #49417d;
+  color: #fff;
 }
 
 figure .figure-set {
