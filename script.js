@@ -256,12 +256,29 @@ app.component("figure-video", {
     }
   },
   template: `<video ref="video" v-lazyload-video class="loader" :data-src="source" :data-poster="poster" :alt="alt" >
-      <track label="English" kind="subtitles" srclang="en" v-if="hasAudio" :data-src="subtitle" default>
+      <track label="English" kind="subtitles" srclang="en" v-if="hasAudio" :src="subtitle" default>
     </video>
-    <button class="figure-video__unmute" v-if="hasAudio" v-on:click="unmute">
-      <span v-if="!isMuted">⏸ Mute</span>
-      <span v-if="isMuted">▶️ Unmute</span>
+    <button class="nav figure-video__unmute" v-if="hasAudio" v-on:click="unmute">
+      <mute-icon v-if="!isMuted" /> <span v-if="!isMuted">Mute</span>
+      <unmute-icon v-if="isMuted"/> <span v-if="isMuted">Unmute</span>
     </button>`,
+});
+app.component("mute-icon", {
+  template: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4zM22 9l-6 6M16 9l6 6"/></svg>`
+});
+app.component("unmute-icon", {
+  template: `<svg 
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+  <g transform="rotate(180 50 50)"><rect x="12.5" y="15" width="15" height="40" fill="currentColor">
+  <animate attributeName="height" values="50;70;30;50" keyTimes="0;0.33;0.66;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.4s"></animate>
+  </rect><rect x="32.5" y="15" width="15" height="40" fill="currentColor">
+  <animate attributeName="height" values="50;70;30;50" keyTimes="0;0.33;0.66;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.2s"></animate>
+  </rect><rect x="52.5" y="15" width="15" height="40" fill="currentColor">
+  <animate attributeName="height" values="50;70;30;50" keyTimes="0;0.33;0.66;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" begin="-0.6s"></animate>
+  </rect><rect x="72.5" y="15" width="15" height="40" fill="currentColor">
+  <animate attributeName="height" values="50;70;30;50" keyTimes="0;0.33;0.66;1" dur="1s" repeatCount="indefinite" calcMode="spline" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" begin="-1s"></animate>
+  </rect></g>
+  </svg>`
 });
  
 app.component("figure-image", {
@@ -320,7 +337,13 @@ app.component("figure-set", {
         <video v-if="source.poster" v-lazyload-video class="loader" :data-src="source.source" :data-poster="poster" :alt="alt" />
         <img v-if="!source.poster" v-lazyload-img class="loader" :data-url="source.source" :alt="alt" />
       </li>
-    </ol></div><button class="nav" type="button" v-on:click="next" >▶️ <span>Next</span></button></div>`,
+    </ol></div><button class="nav" type="button" v-on:click="next" >
+     <span>Next</span> <next-icon/>
+    </button></div>`,
+});
+
+app.component("next-icon", {
+  template: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>`,
 });
 app.component("figure-time", {
   props: ["title", "datetime"],
@@ -382,8 +405,12 @@ app.component("figure-caption", {
   template: `<figcaption>
       <div class="form" v-if="editMode">
         <textarea ref="body" v-model="value" placeholder="Your Caption" />
-        <a class="button" v-on:click="send" v-bind:disabled="!value" v-bind:href="link" target="_blank" title="Send your caption to me!">✉️ Send</a>
-        <button class="button" type="button" v-on:click="cancel" >Cancel</button>
+        <a class="button" v-on:click="send" :disabled="value === null" v-bind:href="link" target="_blank" title="Send your caption to me!">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span>Send</span></a>
+        <button class="nav" type="button" v-on:click="cancel" >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38"/></svg>
+        <span>Cancel</span></button>
       </div>
       <div v-else>
           <span v-if="value">

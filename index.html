@@ -1959,6 +1959,110 @@
             <p>Phew that took a long time.</p>
             <p>LOTS of learning.</p>
           </figure>
+          <figure id="131">
+            <figure-image figure-id="131"></figure-image>
+            <figure-caption figure-id="131">
+              Art!
+            </figure-caption>
+            <figure-time datetime="2021-09-14T05:01:30.000Z" title="Sep 14, 2021"></figure-time>
+            <p>Happy birthday to my dearest friend and art inspiration 
+              <a target="_blank" href="https://luinova.com/" >luinova</a>
+            </p>
+          </figure>
+          <figure id="132">
+            <figure-image figure-id="132"></figure-image>
+            <figure-caption figure-id="132">
+              Naked Knitting
+            </figure-caption>
+            <figure-time datetime="2021-09-18T05:01:30.000Z" title="Sep 18, 2021"></figure-time>
+            <p>Happy retirement <a href="https://www.instagram.com/brianmgronlund/" target="_blank" >@brianmgronlund</a>!</p>
+            <p>I always remember how obsessed I was with your Star Trek bag when we first met at 
+              <a href="https://www.sfmenknit.us/" target="_blank">SF Men Knit</a>.</p>
+            <p>Your incredible fashion taste and wonderful perspective on life.</p>
+            <p>You are a delight <a href="https://www.instagram.com/brianmgronlund/" target="_blank" >@brianmgronlund</a> I hope retirement is a blast!</p>
+            <p>To infinity and beyond!</p>
+          </figure>
+          <figure id="133">
+            <figure-set figure-id="133" :count="2"></figure-set>
+            <figure-caption figure-id="133">
+              Lessons on Drinking
+            </figure-caption>
+            <figure-time
+              datetime="2021-09-26T05:01:30.000Z"
+              title="Sep 26, 2021"
+            ></figure-time>
+            <p>I had a shot yesterday, and I’m still hurting.</p>
+            <p>This is a reminder to my future self to not break to peer pressure.</p>
+            <p>Your body will thank you, Shan.</p>
+          </figure>
+          <figure id="134">
+            <figure-set figure-id="134" :count="3"></figure-set>
+            <figure-caption figure-id="134">
+              Failure is Normal
+            </figure-caption>
+            <figure-time
+              datetime="2021-12-06T05:01:30.000Z"
+              title="Dec 6, 2021"
+            ></figure-time>
+            <p>I failed my drivers test for the 4th time.</p>
+            <p>It’s hard not to be hard on myself, it’s hard being okay right now.</p>
+            <p>But we carry on and I’m terrified of the next one</p>
+          </figure>
+          <figure id="135">
+            <figure-image figure-id="135"></figure-image>
+            <figure-caption figure-id="135">
+              Pokémon is coming out of the woodwork
+            </figure-caption>
+            <figure-time
+              datetime="2021-12-09T05:01:30.000Z"
+              title="Dec 9, 2021"
+            ></figure-time>
+            <p>Catch Team Rocket hosting Pokémon-a-Gogo!</p>
+            <p>This Saturday at 10pm at <a href="https://www.instagram.com/riotheatre/" target="_blank">@riotheatre</a> 
+            — a full-length burlesque movie featuring your favourite 
+            <a href="https://www.instagram.com/geekenders/" target="_blank" >@geekenders</a> performers!</p>
+            <p>Support local artists!</p>
+            <p>
+              Veronica Vamp as Jesse, 
+              <a href="https://www.instagram.com/jaynefondue/" target="_blank" >Jayne Fondue</a> as James and 
+              Bag Daddy (me) as Meowth</p>
+          </figure>
+          <figure id="136">
+            <figure-image figure-id="136"></figure-image>
+            <figure-caption figure-id="136">
+              The Best Gift
+            </figure-caption>
+            <figure-time
+              datetime="2021-12-25T05:01:30.000Z"
+              title="Dec 25, 2021"
+            ></figure-time>
+            <p>Happy Holidays!</p>
+            <p>And remember the people in your life are the best gifts</p>
+          </figure>
+          <figure id="137">
+            <figure-image figure-id="137"></figure-image>
+            <figure-caption figure-id="137">
+              Cleaning Up
+            </figure-caption>
+            <figure-time
+              datetime="2022-01-15T05:01:30.000Z"
+              title="Jan 15, 2022"
+            ></figure-time>
+            <p>I've been struggling with an oil stain in a shirt.</p>
+            <p>I think the only route is to burn it.</p>
+          </figure>
+          <figure id="137">
+            <figure-image figure-id="138"></figure-image>
+            <figure-caption figure-id="138">
+              My new boyfriend
+            </figure-caption>
+            <figure-time
+              datetime="2022-02-14T05:01:30.000Z"
+              title="Feb 14, 2022"
+            ></figure-time>
+            <p>This valentines day.</p>
+            <p>I'll be treating myself.</p>
+          </figure>
         </main>
         <footer>
           With 💜
@@ -1967,29 +2071,29 @@
           </a>
         </footer>
         <nav>
-          <button v-bind:disabled="current == max" v-on:click="last">
-            ⏮
-            <span>Newest</span>
+          <button  v-bind:disabled="current == min" v-on:click="first">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
+            <span>First</span>
           </button>
-          <button v-bind:disabled="current == max" v-on:click="newer">
-            ⏪
-            <span>Newer</span>
+          <button  v-bind:disabled="current == min" v-on:click="older">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            <span>Older</span>
           </button>
           <button v-on:click="share">
-            🆒
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
             <span>Share</span>
           </button>
           <button v-on:click="info">
-            ℹ️
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
             <span>Info</span>
           </button>
-          <button v-bind:disabled="current == min" v-on:click="older">
-            <span>Older</span>
-            ⏩
+          <button v-bind:disabled="current == max" v-on:click="newer">
+            <span>Newer</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
           </button>
-          <button v-bind:disabled="current == min" v-on:click="first">
-            <span>First</span>
-            ⏭
+          <button v-bind:disabled="current == max" v-on:click="last">
+            <span>Newest</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 17l5-5-5-5M6 17l5-5-5-5"/></svg>
           </button>
         </nav>
       </div>

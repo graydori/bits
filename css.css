@@ -41,21 +41,10 @@ figure img {
 }
 
 figure .figure-video__unmute {
-  font-family: "Concert One", cursive;
   position: absolute;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 5px;
-  background: #fff;
-  color: #49417d;
-  border: 1px solid;
-  display: inline;
-  cursor: pointer;
-}
-figure .figure-video__unmute:hover {
-  background: #49417d;
-  color: #fff;
 }
 
 figure .figure-set {
@@ -145,6 +134,11 @@ figcaption .form a.button {
   text-decoration: none;
   background: #49417d;
   color: #fff;
+  display: inline-flex;
+  align-items: center;
+}
+figcaption .form a.button span {
+  padding: 0 4px;
 }
 figcaption .form a[disabled] {
   pointer-events: none;
@@ -222,14 +216,20 @@ nav button {
   background: none;
   border: none;
   color: #49417d;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid;
   font-family: "Concert One", cursive;
   font-size: 1.5rem;
   border-radius: 0.5rem;
   padding: 0.3rem;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 }
 button.nav:disabled,
 nav button:disabled {
+  background: transparent !important;
+  color: #49417d !important;
   cursor: not-allowed;
   opacity: 0.6;
 }
@@ -237,8 +237,12 @@ nav button:disabled {
 button.nav span,
 nav button span {
   font-size: 1rem;
+  vertical-align: text-top;
+  padding: 0 4px;
+  /*
   text-shadow: #fff 2px 2px, #fff -2px -2px, #fff -2px 2px, #fff 2px -2px,
     #fff 2px 0px, #fff 0px -2px, #fff 0px 2px, #fff -2px 0px;
+    */
 }
 
 button.nav:active,
@@ -280,6 +284,7 @@ footer {
 [aria-hidden] {
   opacity: 0.7;
   pointer-events: none;
+  /* filter: blur(4px); */
 }
 
 dialog .cancel {
