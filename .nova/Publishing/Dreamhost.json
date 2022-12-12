@@ -1,0 +1,11 @@
+{
+  "identifier" : "37634C57-E4B3-45FB-8B07-41CDDFE5A8D5",
+  "ignoredFilePatterns" : [
+    "*.md"
+  ],
+  "localPath" : ".",
+  "remotePath" : "\/home\/graydori\/shan.naziripour.com\/bits",
+  "remoteURL" : "https:\/\/shan.naziripour.com\/bits\/",
+  "server" : "Dreamhost",
+  "usesPublishing" : false
+}
