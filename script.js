@@ -226,6 +226,17 @@ app.component("figure", {
   },
 });
 
+
+app.component("figure-frame", {
+  props: ["figureId", "url"],
+  computed: {
+      alt: function () {
+          return `Bits Comic: Number ${this.figureId}`;
+      },
+  },
+  template: `<iframe class="loader" :src="url" :alt="alt" />`,
+});
+
 app.component("figure-video", {
   props: ["figureId","hasAudio"],
   data() {

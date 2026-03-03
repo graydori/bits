@@ -34,6 +34,10 @@ figure {
   position: relative;
 }
 
+figure iframe {
+  border: 0;
+}
+
 figure video,
 figure img {
   width: 80%;
