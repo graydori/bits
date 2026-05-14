@@ -208,6 +208,41 @@ app.directive("lazyload-img", {
       }
   }
 });
+app.directive("lazyload-frame", {
+  beforeMount(el){
+      function loadFrame() {
+        if (el.nodeName !== "IFRAME") throw new Error("lazyload-frame directive must be applied to a <iframe> element");
+        if (el.dataset.loaded) return;
+        el.dataset.loaded = "true";
+        el.addEventListener("load", () => el.classList.add("loaded"));
+        el.addEventListener("error", (e) =>
+          console.error("iframe load", e)
+        );
+        el.src = el.dataset.url;
+      }
+      function handleIntersect(entries, observer) {
+          entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                  loadFrame();
+                  observer.unobserve(entry.target);
+              }
+          });
+      }
+      function createObserver() {
+          const options = {
+              root: null,
+              threshold: "0",
+          };
+          const observer = new IntersectionObserver(handleIntersect, options);
+          observer.observe(el.closest("figure") || el);
+      }
+      if (window["IntersectionObserver"]) {
+          createObserver();
+      } else {
+          loadFrame();
+      }
+  }
+});
 app.component("figure", {
   props: ["id"],
   computed: {
@@ -234,7 +269,7 @@ app.component("figure-frame", {
           return `Bits Comic: Number ${this.figureId}`;
       },
   },
-  template: `<iframe class="loader" :src="url" :alt="alt" />`,
+  template: `<iframe v-lazyload-frame class="loader" :data-url="url" :title="alt" />`,
 });
 
 app.component("figure-video", {
