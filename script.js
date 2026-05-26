@@ -251,7 +251,8 @@ app.component("figure-frame", {
   methods: {
       isActive: function () {
           const figure = this.$el.closest("figure");
-          return figure && (figure.matches(":target") || (!location.hash && figure.matches(":last-child")));
+          if (!figure) return false;
+          return location.hash ? location.hash.substring(1) === figure.id : figure.matches(":last-child");
       },
       loadFrame: function () {
           if (this.$el.dataset.loaded) return;
