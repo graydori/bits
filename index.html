@@ -20,7 +20,7 @@
       href="https://fonts.googleapis.com/css2?family=Concert+One&family=IM+Fell+English:ital@1&family=Work+Sans&display=swap"
       rel="stylesheet"
     />
-    <link href="css.css?_t=20220411" rel="stylesheet" type="text/css" />
+    <link href="css.css?_t=20260624" rel="stylesheet" type="text/css" />
     <script src="https://unpkg.com/vue"></script>
     <script>
       window['_fs_debug'] = false;
@@ -49,13 +49,13 @@
   </head>
 
   <body>
-    <header>
-      <h1>
-        <img src="img/bits.png" alt="Bits" />
-        <small>Just A Bit</small>
-      </h1>
-    </header>
     <div id="app">
+      <header>
+        <h1>
+          <img src="img/bits.png" alt="Bits" />
+          <a v-on:click="info">Just A Bit</a>
+        </h1>
+      </header>
       <div v-bind:aria-hidden="showShare || showInfo? true : null">
         <main id="comics">
           <figure id="0">
@@ -2106,6 +2106,22 @@
             <p>This question made me sad- because there is not better type or person. No one is a villain or a hero.</p>
             <p>We are just.</p>
           </figure>
+          <figure id="142">
+            <figure-image figure-id="142"></figure-image>
+            <figure-caption figure-id="142">
+              Tag - I quit.
+            </figure-caption>
+            <figure-time
+              datetime="2026-06-24T05:01:30.000Z"
+              title="Jun 24, 2026"
+            ></figure-time>
+            <p>I was playing tag with my nephews and their friends and at one point one of them said... </p>
+            <p>"Tag - I quit."</p>
+            <p>I thought this was so funny at the time, because you CAN stop if you are tired or bored at ANY point.</p>
+            <p>But part of me always feels like that we need to go, go, go and stay busy. But it's also okay to say...</p>
+            <p>"I quit."</p>
+            <p>Especially when you're on top.</p>
+          </figure>
         </main>
         <footer>
           With 💜
@@ -2125,10 +2141,6 @@
           <button v-on:click="share">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
             <span>Share</span>
-          </button>
-          <button v-on:click="info">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-            <span>Info</span>
           </button>
           <button v-bind:disabled="current == max" v-on:click="newer">
             <span>Newer</span>

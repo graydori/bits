@@ -16,8 +16,15 @@ h1 {
   text-transform: uppercase;
   color: #746f98;
 }
-h1 small {
+h1 a {
   display: block;
+  font-size: 2.3rem;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #746f98;
+}
+h1 a:hover,h1 a:active {
+  text-decoration: underline wavy;
 }
 
 main {
@@ -207,7 +214,6 @@ p:last-of-type::after {
 
 nav {
   position: fixed;
-  width: 80vw;
   bottom: 3px;
   display: flex;
   justify-content: space-around;
@@ -215,10 +221,30 @@ nav {
   max-width: 600px;
   left: 50vw;
   transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid;
+  color: #49417d;
+  border-radius: 1.5rem;
+  overflow: hidden;
 }
 
-button.nav,
 nav button {
+  background: none;
+  border: none;
+  color: #49417d;
+  border-right: 1px solid;
+  font-family: "Concert One", cursive;
+  font-size: 1.5rem;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+nav button:last-child {
+  border-right: 0;
+}
+
+button.nav {
   background: none;
   border: none;
   color: #49417d;
@@ -232,6 +258,7 @@ nav button {
   display: inline-flex;
   align-items: center;
 }
+
 button.nav:disabled,
 nav button:disabled {
   background: transparent !important;
@@ -245,10 +272,6 @@ nav button span {
   font-size: 1rem;
   vertical-align: text-top;
   padding: 0 4px;
-  /*
-  text-shadow: #fff 2px 2px, #fff -2px -2px, #fff -2px 2px, #fff 2px -2px,
-    #fff 2px 0px, #fff 0px -2px, #fff 0px 2px, #fff -2px 0px;
-    */
 }
 
 button.nav:active,
@@ -257,13 +280,6 @@ nav button:active,
 nav button:hover {
   background-color: #49417d;
   color: #fff;
-}
-
-button.nav:active span,
-button.nav:hover span,
-nav button:active span,
-nav button:hover span {
-  text-shadow: none;
 }
 
 #info,
@@ -283,7 +299,7 @@ footer {
   font-style: italic;
   opacity: 0.8;
   max-width: 600px;
-  margin: 0 auto 4rem auto;
+  margin: 0 auto 10rem auto;
   text-indent: 3rem;
 }
 
