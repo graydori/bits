@@ -468,7 +468,7 @@ app.component("figure-caption", {
           <span v-else>
             <slot></slot>
           </span>
-          <button v-on:click="edit" title="Edit">✐</button>
+          <button v-on:click="edit" class="edit" title="Edit">✐</button>
           <i v-if="value">(edited)</i>
       </div>
     </figcaption>`,
